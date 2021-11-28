@@ -10,5 +10,7 @@ make sure the following enviroment variables are available, the ghtoken is a git
 ghuser="username"
 ghtoken="gh-auth-token"
 
-# creating the auth token 
-to use this tool you need to add your personal access token to your local env as ghtoken. To create this token please have a look at: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+# Creating the auth token 
+to use this tool you need to add your personal access token to your local env as ghtoken. To create this token please have a look at: 
+<br>
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
