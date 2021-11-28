@@ -33,10 +33,10 @@ class githubFollow():
     def getFollowingFollows(self, user):
         url = f"/users/{user}/following"
         followingFollows = self.createRequest(url, "GET")
-        print(user, "|| checking", len(followingFollows),"users")
+        print(f"{user} || checking {len(followingFollows)} accounts || followed {self.followCount} users || total accounts checked {self.count}")
         for user in tqdm(followingFollows):
             self.followFollowingFollows(user['login'])
-        print("checked a total of", self.count, "users || followed", self.followCount,"users")
+        os.system("clear")
 
     def validateFollowed(self, username):
         url = f"/user/following/{username}"
