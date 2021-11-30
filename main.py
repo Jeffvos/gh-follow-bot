@@ -14,9 +14,9 @@ class githubFollow():
         self.followCount = 0
 
     def checkIfCreds(self):
-            if not self.ghToken and self.ghUser:
-                print("please export login credentials")
-                quit()
+        if self.ghToken or self.ghUser == None:
+            print("please export login credentials")
+            quit()
 
     def createRequest(self, url, method):
         r = requests.request(method, self.baseUrl+url, params={"per_page":100}, auth=(self.ghUser,self.ghToken))
