@@ -5,8 +5,12 @@ from tqdm import tqdm
 
 class githubFollow():
     def __init__(self):
+        os.system("clear")
         self.ghUser = os.environ.get("ghuser")
         self.ghToken = os.environ.get("ghtoken")
+        if not self.ghToken and self.ghUser:
+            print("please export login credentials")
+            quit()
         self.baseUrl = "https://api.github.com"
         self.count = 0
         self.followCount = 0
@@ -34,8 +38,14 @@ class githubFollow():
         url = f"/users/{user}/following"
         followingFollows = self.createRequest(url, "GET")
         print(f"{user} || checking {len(followingFollows)} accounts || followed {self.followCount} users || total accounts checked {self.count}")
-        for user in tqdm(followingFollows):
-            self.followFollowingFollows(user['login'])
+        try:
+            for user in tqdm(followingFollows):
+                self.followFollowingFollows(user['login'])
+        except KeyboardInterrupt:
+            os.system("clear")
+            print("Stopped")
+            print(f"checked {self.count} accounts and started following {self.followCount} accounts")
+            quit()
         os.system("clear")
 
     def validateFollowed(self, username):
