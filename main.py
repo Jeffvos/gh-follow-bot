@@ -8,12 +8,15 @@ class githubFollow():
         os.system("clear")
         self.ghUser = os.environ.get("ghuser")
         self.ghToken = os.environ.get("ghtoken")
-        if not self.ghToken and self.ghUser:
-            print("please export login credentials")
-            quit()
+        self.checkIfCreds()
         self.baseUrl = "https://api.github.com"
         self.count = 0
         self.followCount = 0
+
+    def checkIfCreds(self):
+            if not self.ghToken and self.ghUser:
+                print("please export login credentials")
+                quit()
 
     def createRequest(self, url, method):
         r = requests.request(method, self.baseUrl+url, params={"per_page":100}, auth=(self.ghUser,self.ghToken))
