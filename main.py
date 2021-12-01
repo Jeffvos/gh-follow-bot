@@ -15,7 +15,7 @@ class githubFollow():
 
     def checkIfCreds(self):
         if self.ghToken or self.ghUser == None:
-            print("please export login credentials")
+            print("Please export your username and auth token")
             quit()
 
     def createRequest(self, url, method):
