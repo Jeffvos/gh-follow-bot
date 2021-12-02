@@ -31,7 +31,6 @@ class githubFollow():
             self.getFollowingFollows(user['login'])
 
     def getFollowing(self):
-        #get current users following
         url = "/user/following"
         following = self.createRequest(url, "GET")
         self.parseLoad(following)
@@ -69,9 +68,11 @@ class githubFollow():
                 print(followUser)
                 time.sleep(360)
                 followUser = self.createRequest(url, "PUT")
-            self.followCount = self.followCount + 1
+            else:
+                self.followCount = self.followCount + 1
         return username
         
 
-follow = githubFollow()
-follow.getFollowing()
+if __name__ == "__main__":  
+    follow = githubFollow()
+    follow.getFollowing()
