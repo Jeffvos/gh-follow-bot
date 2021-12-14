@@ -45,7 +45,7 @@ class githubFollow():
                 self.followFollowingFollows(user['login'])
         except KeyboardInterrupt:
             os.system("clear")
-            print("Stopped")
+            print("Stopped..")
             print(f"checked {self.count} accounts and started following {self.followCount} accounts")
             quit()
         os.system("clear")
