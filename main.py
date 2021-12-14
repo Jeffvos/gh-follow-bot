@@ -2,6 +2,7 @@ import os
 import requests
 import time
 from tqdm import tqdm
+import versioncontrol
 
 class githubFollow():
     def __init__(self):
@@ -9,13 +10,19 @@ class githubFollow():
         self.ghUser = os.environ.get("ghuser")
         self.ghToken = os.environ.get("ghtoken")
         self.checkIfCreds()
+        self.validateVersion()
         self.baseUrl = "https://api.github.com"
         self.count = 0
         self.followCount = 0
 
     def checkIfCreds(self):
-        if self.ghToken or self.ghUser == None:
-            print("Please export your username and auth token")
+        if self.ghToken == None or self.ghUser == None:
+            print('please export ghtoken and ghuser')
+            quit()
+
+    def validateVersion(self):
+        versionCheck = versioncontrol.checkVersion()
+        if versionCheck.running_latest() == False:
             quit()
 
     def createRequest(self, url, method):
