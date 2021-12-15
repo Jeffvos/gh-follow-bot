@@ -16,7 +16,7 @@ class githubFollow():
         self.followCount = 0
 
     def checkIfCreds(self):
-        if self.ghToken == None or self.ghUser == None:
+        if len(self.ghToken) < 1 or len(self.ghUser) < 1:
             print('please export ghtoken and ghuser')
             quit()
 
