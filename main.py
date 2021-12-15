@@ -7,16 +7,16 @@ import versioncontrol
 class githubFollow():
     def __init__(self):
         os.system("clear")
+        self.validateVersion()
         self.ghUser = os.environ.get("ghuser")
         self.ghToken = os.environ.get("ghtoken")
         self.checkIfCreds()
-        self.validateVersion()
         self.baseUrl = "https://api.github.com"
         self.count = 0
         self.followCount = 0
 
     def checkIfCreds(self):
-        if len(self.ghToken) < 1 or len(self.ghUser) < 1:
+        if self.ghToken == None or self.ghUser == None:
             print('please export ghtoken and ghuser')
             quit()
 

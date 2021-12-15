@@ -18,7 +18,9 @@ class checkVersion():
         versions = r.json()
         for version in versions:
             if version['tag_name'] > self.current_version:
-                print(f"You are currently running version {self.current_version} please upgrade to version {version['tag_name']}")
+                msg_current = f"You are currently running version {self.current_version}"
+                msg_latest = f"\nPlease upgrade to version {version['tag_name']}"
+                print(msg_current,msg_latest)
                 return False
             else:
                 print(f"running the latest version {self.current_version}")
